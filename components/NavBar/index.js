@@ -1,12 +1,10 @@
-/** @format */
-import React, { useRef } from 'react';
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import { styled } from '@mui/system';
+import React, { useState, useRef } from 'react';
+import { Popover } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Grid from '@mui/material/Grid';
-import Image from 'next/image';
+import { styled } from '@mui/system';
+import { css } from '@emotion/react';
 import Link from 'next/link';
 import {
   Box,
@@ -21,64 +19,70 @@ const Bar = styled(AppBar)({
   backgroundColor: 'white',
 });
 
-const NavBarMenu = ({ name, items }) => {
-  const [open, setOpen] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const canBeOpen = open && Boolean(anchorEl);
-  const id = canBeOpen ? 'spring-popper' : undefined;
-
+const NavBarItems = ({ name, items = [] }) => {
+  const [openedPopover, setOpenedPopover] = useState(false);
   const popoverAnchor = useRef(null);
+
   const popoverEnter = ({ currentTarget }) => {
-    setOpen(true);
+    setOpenedPopover(true);
   };
 
   const popoverLeave = ({ currentTarget }) => {
-    setOpen(false);
+    setOpenedPopover(false);
   };
-
   return (
-    <Grid item>
+    <>
       <Button
-        aria-describedby={id}
-        type="button"
         ref={popoverAnchor}
+        aria-owns="mouse-over-popover"
+        aria-haspopup="true"
         onMouseEnter={popoverEnter}
         onMouseLeave={popoverLeave}
+        style={{
+          fontSize: 12,
+          color: `darkblue`,
+          fontFamily: 'Gotham Medium',
+          padding: '0 16px',
+        }}
       >
         {name}
       </Button>
-      <Popper
+      <Popover
         style={{ pointerEvents: 'none' }}
-        disablePortal
-        id={id}
-        open={open}
+        id="mouse-over-popover"
+        open={openedPopover}
         anchorEl={popoverAnchor.current}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'right',
+          horizontal: 'left',
         }}
         transformOrigin={{
           vertical: 'top',
           horizontal: 'left',
         }}
         PaperProps={{
-          style: { backgroundColor: 'red', pointerEvents: 'auto' },
+          style: { pointerEvents: 'auto' },
           onMouseEnter: popoverEnter,
           onMouseLeave: popoverLeave,
         }}
       >
-        {items.map(({ href, name }) => (
-          <Link key={'nav_menu' + name} href={href}>
-            {name}
-          </Link>
-        ))}
-      </Popper>
-    </Grid>
+        <Paper style={{ padding: '10px 18px' }}>
+          {items.map(({ name, href }) => (
+            <div
+              css={css`
+                            padding: 8px 4px;
+                        `}
+            >
+              <Link href={href}>{name}</Link>
+            </div>
+          ))}
+        </Paper>
+      </Popover>
+    </>
   );
 };
 
-const NavBar = () => {
+const MyComponent = ({ loading, login, wrong, clearWrongLogin }) => {
   return (
     <Grid container spacing={0}>
       <Grid item xs={12}>
@@ -98,19 +102,33 @@ const NavBar = () => {
                                         }
                                     `}
                 >
-                  <Image
-                    src="/logo.png"
-                    alt="Drive Clear Logo"
-                    width="280px"
-                    height="60px"
-                    objectFit="contain"
+                  <NavBarItems
+                    name="Services"
+                    items={[
+                      { name: 'Windshield Repair', href: '/link1' },
+                      { name: 'Windshield Replacement', href: '/link2' },
+                      { name: 'Windshieeld Camera', href: '/link2' },
+                      { name: 'Auto Glass Warranty', href: '/link2' },
+                      { name: 'Windshield Insurance Claims', href: '/link2' },
+                      { name: 'Rain Repellent Treatments', href: '/link2' },
+                    ]}
+                  />
+                  <NavBarItems
+                    name="Franchise Opportunities"
+                    items={[
+                      { name: 'Section 2 page 1', href: '/link1' },
+                      { name: 'Section 2 Testing page 2', href: '/link2' },
+                    ]}
+                  />
+                  <NavBarItems
+                    name="About Us"
+                    items={[
+                      { name: 'Secyon Testing page 1', href: '/link1' },
+                      { name: 'section 3 Testing page 2', href: '/link2' },
+                    ]}
                   />
                 </div>
               </Grid>
-              <NavBarMenu
-                name={'Servicesss'}
-                items={[{ href: '/test', name: ' Testing----' }]}
-              />
             </Grid>
           </Toolbar>
         </Bar>
@@ -119,4 +137,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default MyComponent;
