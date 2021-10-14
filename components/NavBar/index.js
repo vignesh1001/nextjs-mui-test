@@ -34,7 +34,7 @@ const NavBarMenu = ({ name, items }) => {
   };
 
   const popoverLeave = ({ currentTarget }) => {
-    setOpen(true);
+    setOpen(false);
   };
 
   return (
@@ -63,7 +63,7 @@ const NavBarMenu = ({ name, items }) => {
           horizontal: 'left',
         }}
         PaperProps={{
-          style: { pointerEvents: 'auto' },
+          style: { backgroundColor: 'red', pointerEvents: 'auto' },
           onMouseEnter: popoverEnter,
           onMouseLeave: popoverLeave,
         }}
