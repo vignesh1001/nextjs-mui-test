@@ -11,13 +11,6 @@
     "next": "^10.2.3",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "@mui/material": "next",
-    "@mui/lab": "next",
-    "@mui/styled-engine-sc": "next",
-    "@testing-library/jest-dom": "latest",
-    "@testing-library/react": "latest",
-    "@testing-library/user-event": "latest",
-    "react-scripts": "latest",
-    "styled-components": "latest"
+    "@mui/material": "latest"
   }
 }
