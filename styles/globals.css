@@ -14,3 +14,55 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+/** @format */
+@font-face {
+  font-family: "Gotham Light";
+  src: url("/fonts/Gotham/GothamHTF-Light.eot");
+  src: url("/fonts/Gotham/GothamHTF-Light.eot?#iefix")
+  format("embedded-opentype"),
+  url("/fonts/Gotham/GothamHTF-Light.woff") format("woff");
+  /*url("/fonts/Gotham/GothamHTF-Light.ttf") format("truetype");*/
+}
+
+@font-face {
+  font-family: "Gotham Bold";
+  src: url("/fonts/Gotham/GothamHTF-Bold.eot");
+  src: url("/fonts/Gotham/GothamHTF-Bold.eot?#iefix")
+  format("embedded-opentype"),
+  url("/fonts/Gotham/GothamHTF-Bold.woff") format("woff");
+  /*,url("/fonts/Gotham/GothamHTF-bold-webfont.ttf") format("truetype");*/
+}
+@font-face {
+  font-family: "Gotham Medium";
+  src: url("/fonts/Gotham/GothamHTF-Medium.eot");
+  src: url("/fonts/Gotham/GothamHTF-Medium.eot?#iefix")
+  format("embedded-opentype"),
+  url("/fonts/Gotham/GothamHTF-Medium.woff") format("woff");
+  /*url("/fonts/Gotham/GothamHTF-Medium.ttf") format("truetype");*/
+}
+@font-face {
+  font-family: "Gotham Thin";
+  src: url("/fonts/Gotham/GothamHTF-Thin.eot");
+  src: url("/fonts/Gotham/GothamHTF-Thin.eot?#iefix")
+  format("embedded-opentype"),
+  url("/fonts/Gotham/GothamHTF-Thin.woff") format("woff");
+  /*url("/fonts/Gotham/GothamHTF-Thin.ttf") format("truetype");*/
+}
+
+@font-face {
+  font-family: "Gotham Black";
+  src: url("/fonts/Gotham/GothamHTF-Black.eot");
+  src: url("/fonts/Gotham/GothamHTF-Black.eot?#iefix")
+  format("embedded-opentype"),
+  url("/fonts/Gotham/GothamHTF-Black.woff") format("woff");
+  /*url("/fonts/Gotham/GothamHTF-Black.ttf") format("truetype");*/
+}
+
+
+
+
+body {
+  margin: 0;
+}
